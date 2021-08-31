@@ -1,17 +1,13 @@
 """
 Generate signatures using a Logistic Regression trained on Term Frequencies.
 """
-from pathlib import Path
 from typing import List
-from clava.models import Sample, Instruction
 
-from nltk import ngrams
 from joblib import load
+from nltk import ngrams
 
-from clava.signatures import Signature, Sample
+from clava.models import Instruction, Sample
 
-
-# TODO: Parent object: Classifier; SignatureGenerator; GenerationStrategy;:q
 
 class LogRegTF(object):
     """
@@ -30,8 +26,6 @@ class LogRegTF(object):
         self.n = n
 
     def generate(self, sample: Sample, topk: int) -> List[Instruction]:
-        """
-        """
         ranked = self._rank_instructions(sample.code)
         return ranked[:topk]
 
