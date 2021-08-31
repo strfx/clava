@@ -47,6 +47,7 @@ clava was heavily inspired by these projects:
 To install `clava`, clone this repository and run:
 
 ```sh
+$ pip install -r requirements.txt
 $ python setup.py install
 ```
 
