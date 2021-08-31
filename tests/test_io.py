@@ -6,7 +6,7 @@ from clava.corpus import Corpus
 from clava.models import Label
 
 
-TEST_DATAFILE = "wipro/stats/dataset_2k_disasm.csv"
+TEST_DATAFILE = "tests/data/some-test-corpus.csv"
 
 
 def test_create_corpora_from_dataframe():
