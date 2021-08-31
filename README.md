@@ -4,12 +4,15 @@
 </h1>
 
 <h4 align="center">Generate Code-Based <a href="https://virustotal.github.io/yara/" target="_blank">Yara</a> Rules using Machine Learning.</h4>
-<p align="center">
-  <a href="https://www.python.org/" target="_blank">
-    <img src="https://img.shields.io/badge/Made%20with-Python-yellow" />
+<p align="center">  
+  <a href="https://github.com/strfx/clava/actions" target="_blank">
+    <img src="https://img.shields.io/github/workflow/status/strfx/clava/build" />
   </a>
   <a href="https://github.com/strfx/clava/blob/main/LICENSE" target="_blank">
      <img src="https://img.shields.io/badge/License-MIT-blue.svg" />
+  </a>
+  <a href="http://mypy-lang.org/" target="_blank">
+     <img src="http://www.mypy-lang.org/static/mypy_badge.svg" />
   </a>
 </p>
  
