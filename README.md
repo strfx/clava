@@ -91,8 +91,8 @@ Good datasets are essential, however there are not many public datasets of good-
 
 * [VirusShare](https://virusshare.com/) offers access to large amounts of malware (registration required).
 * [MalwareBazaar](https://bazaar.abuse.ch/) offers daily collections of malware: https://mb-api.abuse.ch/downloads/
-* [APTMalware Github Repo](https://github.com/cyber-research/APTMalware)
-* [Sysinternals Tools](TODO) are a great set to test your rules against, since Sysinternals tools often cause false positive hits.
+* [APTMalware Github repo](https://github.com/cyber-research/APTMalware)
+* [Windows Sysinternals tools](https://docs.microsoft.com/en-us/sysinternals/) is a collection of Windows system utilites; they often cause security tooling to generate false positives, hence it is a great dataset to test your rules against.
 
 Public goodware datasets are rare - PRs are welcome :smile:
 
