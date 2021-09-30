@@ -8,11 +8,7 @@ from clava import __version__
 
 
 def generate_yara_rule(name: str, sequences, mode: int) -> str:
-    """
-    Returns signature formatted as a Yara rule.
-
-    Returns Yara rule as string.
-    """
+    """ Returns signature formatted as a Yara rule. """
 
     # Metadata strings must always be wrapped in quotes.
     metadata = {

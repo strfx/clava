@@ -1,5 +1,5 @@
 """
-Disassemble input binaries i.e., legitimate and malicious executables.
+Disassemble binaries i.e., legitimate or malicious executables.
 
 Clava uses the Capstone Engine to disassemble binaries. Keep in mind that
 disassembling is a hard and error-prone process and there are many pitfalls.
@@ -7,9 +7,9 @@ We've kept the disassembling straightforward and ignored many edge cases.
 It worked well enough in our experiments, hence we did not pursue any
 improvements here.
 
-Also, clava only supports programs written for x86 architecture and
-in the Portable Executable (PE) format.
-
+Also, clava only supports programs written for x86 architecture and in the
+Portable Executable (PE) format. Other exectuable formats such as ELF are not
+supported, but could be added easily.
 """
 from pathlib import Path
 from typing import List, Tuple
@@ -20,24 +20,24 @@ import pefile
 
 class NoCodeSectionError(Exception):
     """
-    Raise NoCodeSection when no code section can be parsed from a binary.
+    Raise NoCodeSection if we fail to decode an executable's code section.
 
-    There are usually two cases where we can't decode the code section:
-      * The binary is corrupt or malformatted
-      * The binary is obfuscated, packed or encrypted, where the code will
-        be gradually unpacked / decrypted upon execution.
+    The most common cases where this can happen are:
+      * The executable is corrupt or malformatted
+      * The executable is obfuscated, packed or encrypted, i.e., the
+        executables code will be unpacked / decrypted upon execution.
 
-    Since we currently do not support generating signatures for packed /
-    encrypted binaries, we skip these samples.
-
+    Clava does not explicitely support generating signatures for executables
+    that are packed, encrypted or in any other form obfuscated. 
     """
     pass
 
 
 # An instruction consists of two components: an operation and operands e.g.,
-# 'MOV EBP, ESP' where 'MOV' represents the operation EBP and ESP are the
-# operands. We also keep the raw bytes, since we generate code-based signatures
-# later which match on the actual bytes, not on disassembled instructions.
+# 'MOV EBP, ESP' where 'MOV' represents the operation, and 'EBP' and 'ESP' are
+# the operands. We also keep the raw bytes, since we generate code-based
+# signatures later which must match on the actual bytes, not the disassembled
+# instructions.
 #
 # Example: ("MOV", "EBP, ESP", b"\x89\xE5")
 DisassembledInstruction = Tuple[str, str, bytearray]
@@ -48,7 +48,7 @@ def disassemble(executable_location: Path) -> Tuple[int, List[DisassembledInstru
     Disassemble an executable.
 
     To disassemble an executable, we locate the program's code section,
-    extract the raw bytes and then decode the instructions from these bytes.
+    extract the raw bytes and then decode the instructions.
 
     Args:
         executable_location: Location of the executable to be disassembled. This
@@ -66,7 +66,6 @@ def disassemble(executable_location: Path) -> Tuple[int, List[DisassembledInstru
         NoCodeSectionFoundError: Raised when the binary has no code section, or
             if the section could not be decoded (e.g., binary is obfuscated or
             encrypted). 
-
     """
     pe = pefile.PE(str(executable_location))
 

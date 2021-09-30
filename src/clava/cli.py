@@ -1,12 +1,12 @@
 """clava v1.0: Generate code-based Yara rules.
 
 Usage:
-    clava_cli.py <file> [--topk=<sequences>] [--output=<output file>]
+    clava yara <file> [--topk=<sequences>] [--output=<output file>]
 
 Options:
     -h --help               Show this message.
     --version               Show version of clava.
-    --topk=<sequences>      Number of instruction sequences to use [default: 3]
+    --topk=<sequences>      Number of instruction sequences to use [default: 3].
     --output=<output file>  Store the generated rule in this file.
 
 """
@@ -20,7 +20,7 @@ from clava.disassembling import disassemble
 from clava.inference import LogRegClassifier
 from clava.output import generate_yara_rule
 
-NGRAM_SIZE = 6
+# TODO: Make paths configurable via CLI.
 CLASSIFIER_PATH = Path('wipro/models/simple-tf-logreg/logregtf.joblib')
 VECTORIZER_PATH = Path('wipro/models/simple-tf-logreg/tfvectorizer.joblib')
 
@@ -32,23 +32,16 @@ def abort(msg):
 
 def generate_signature(arguments):
     """
-    Generate Yara rule for a sample.
-
-    The generated yara rule can be directly used with the official yara binaries
-    (or yarac for compilation).
-
-    NOTE: At the moment, we only support signatures for Portable Executables
-          (PE) files. Other exectuable formats such as ELF are not supported,
-          but could be added easily.
-
+    Generate a Yara rule for given (malware) sample.
     """
     # Binary to create signature for
     sample = Path(arguments['<file>'])
 
-    # Store the resulting rule in this file (or write to stdout)
+    # Store the generated rule in this file if provided; Either way, the rule
+    # will always be written to stdout too.
     output_file = arguments.get('--output', None)
 
-    # How many sequences (i.e., opcode n-grams) to include in the signature
+    # How many sequences (i.e., mnemonic n-grams) to include in the signature
     num_sequences_in_signatures = int(arguments.get('--topk', 3))
 
     try:
@@ -75,4 +68,5 @@ def generate_signature(arguments):
 
 def main():
     arguments = docopt(__doc__, version="clava v1.0")
-    generate_signature(arguments)
+    if arguments['yara']:
+        generate_signature(arguments)

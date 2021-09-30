@@ -10,8 +10,8 @@ from clava.utils import unique_chunks
 def test_unique_chunks_properties(data, chunk_size):
     """
     unique_chunks must fulfill two properties:
-    - Each chunk must be <= given chunk size
-    - Each chunk must be unique
+      * Each chunk must be <= given chunk size
+      * Each chunk must be unique
     """
     chunks = unique_chunks(data, chunk_size)
 
