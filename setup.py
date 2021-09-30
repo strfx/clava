@@ -38,8 +38,8 @@ setuptools.setup(
     extras_require={
         'dev': [
             'pytest',
-            'pandas',
-            'mypy'
+            'mypy',
+            'pandas',   # TODO: Remove pandas dep
         ]
     }
 )

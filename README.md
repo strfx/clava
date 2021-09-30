@@ -26,6 +26,7 @@
   * [Getting Started](#getting-started)
   * [Development](#development)
   * [Contribute](#contribute)
+  * [Resources](#resources)
   * [Credits](#credits)
 
 # About
@@ -84,6 +85,20 @@ Alternatively, you can run pytest against the `tests/` directory with your own s
 
 Contributions are welcome! If you plan major changes, please create an issue first to discuss the changes.
 
+# Resources
+
+Good datasets are essential, however there are not many public datasets of good- and malware executables. You can assemble your own dataset using projects like:
+
+* [VirusShare](https://virusshare.com/) offers access to large amounts of malware (registration required).
+* [MalwareBazaar](https://bazaar.abuse.ch/) offers daily collections of malware: https://mb-api.abuse.ch/downloads/
+* [APTMalware Github Repo](https://github.com/cyber-research/APTMalware)
+* [Sysinternals Tools](TODO) are a great set to test your rules against, since Sysinternals tools often cause false positive hits.
+
+Public goodware datasets are rare - PRs are welcome :smile:
+
+Tools:
+* [Capstone.js](https://alexaltea.github.io/capstone.js/) for interactive disassembling, useful during development.
+
 # Credits
 
 clava was heavily inspired by these projects:
@@ -93,3 +108,6 @@ clava was heavily inspired by these projects:
 * [binsequencer](https://github.com/karttoon/binsequencer/)
 * [yabin](https://github.com/AlienVault-OTX/yabin)
 
+I would also like to thank these projects:
+* [pefile](https://pypi.org/project/pefile/)
+* [Capstone Disassembler](https://www.capstone-engine.org/)
