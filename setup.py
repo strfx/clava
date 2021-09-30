@@ -40,6 +40,7 @@ setuptools.setup(
             'pytest',
             'mypy',
             'pandas',   # TODO: Remove pandas dep
+            'hypothesis'
         ]
     }
 )
