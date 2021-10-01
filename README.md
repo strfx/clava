@@ -107,7 +107,7 @@ Good datasets are essential, however there are not many public datasets of good-
 * [APTMalware Github repo](https://github.com/cyber-research/APTMalware)
 * [Windows Sysinternals tools](https://docs.microsoft.com/en-us/sysinternals/) is a collection of Windows system utilites; they often cause security tooling to generate false positives, hence it is a great dataset to test your rules against.
 
-Public goodware datasets are rare - PRs are welcome :smile:
+Public goodware datasets are rare - PRs are welcome :-)
 
 Tools:
 * [Capstone.js](https://alexaltea.github.io/capstone.js/) for interactive disassembling, useful during development.
@@ -124,3 +124,5 @@ clava was heavily inspired by these projects:
 I would also like to thank these projects:
 * [pefile](https://pypi.org/project/pefile/)
 * [Capstone Disassembler](https://www.capstone-engine.org/)
+* [mkYARA](https://github.com/fox-it/mkyara)
+
